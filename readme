@@ -1,0 +1,47 @@
+If you are not running DHCP then remove dhcp-client package first.
+
+apt-get -y remove dhcp-client
+If you do not want to read Debian docs on the system then you could also remove doc-Debian package.
+
+apt-get -y remove doc-debian
+You can also remove Linux HOWTOs.
+
+apt-get -y remove doc-linux-text
+You can also remove mtools (see man mtools).
+
+apt-get -y remove mtools
+If you are not using a dialup modem then you don’t need ppp package as well.
+
+apt-get -y remove ppp
+
+The above command also removes a few related packages.
+We have better revision control systems so don’t need rcs.
+
+apt-get -y remove rcs
+apt-get -y remove whiptail
+apt-get -y remove gnu-efi
+apt-get -y remove python
+apt-get -y remove sharutils
+apt-get -y remove slang1
+apt-get -y remove telnet
+apt-get -y remove ftp
+If you are not using IPv6 then remove all entries for IPv6 from /etc/hosts.
+Change the file /etc/motd to change post-login message.
+Change the file /etc/issue to change pre-login message.
+Change /etc/securetty to let root user enter through only a specific terminal lets say 5 so leave the entry tty5 and erase all other entries. Now, after reboot you have to go to terminal 5 by pressing Alt-F5 and enter your username and password there.
+Now run the following as root
+
+apt-get update
+Now change the OS information in /etc/issue.net.
+You also don't need the following users and groups. www-data is used for Apache Web Server, so if you have plans to install Apache from Debian's packages then dont run the command userdel www-data below.
+groupdel audio
+
+groupdel video
+userdel irc
+userdel uucp
+userdel news
+groupdel news
+userdel games
+userdel www-data
+userdel list
+rmdir /usr/local/games
